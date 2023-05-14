@@ -22,14 +22,14 @@ namespace DesingPatternsAsp.Controllers
 
         public IActionResult Index()
         {
-            Log.GetInstance(config.Value.PathLog).Save("Ingreso al index");
+            Log.GetInstance(config.Value.PathLog).Save($"Ingreso al index el {DateTime.Now}");
             ViewBag.NOMBRE = "Aldedier Alberto Martinez Bejarano";
             return View();
         }
 
         public IActionResult Privacy()
         {
-            Log.GetInstance(config.Value.PathLog).Save("Ingreso a privacy");
+            Log.GetInstance(config.Value.PathLog).Save($"Ingreso a privacy el {DateTime.Now}");
             return View();
         }
 

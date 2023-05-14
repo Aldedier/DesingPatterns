@@ -1,44 +1,49 @@
-﻿using DesingPattern.FactoryPattern;
+﻿using DesingPattern.DependencyInjectionPattern;
+using DesingPattern.FactoryPattern;
 using System;
 
-namespace DesingPattern
-{
-    internal class Program
-    {
-        static void Main(string[] args)
-        {
-            /// No
-            #region Singleton
-            //var singleton = Singleton.Singleton.Instance;
-            //var log = Singleton.Log.Instance;
-            //log.Save("Aldedier");
-            //log.Save("Martinez");
+#region Singleton
 
-            //var a = Singleton.Singleton.Instance;
-            //var b = Singleton.Singleton.Instance;
+///// Ejemplo de Singleton en Logs
+//var log = SingletonPattern.Log.Instance;
+//log.Save("Aldedier");
+//log.Save("Martinez");
 
-            //if (a == b)
-            //    Console.WriteLine("Hello World!");
-            //else
-            //    Console.WriteLine("No se parecen");
+//Console.WriteLine(log.Read());
 
-            //Console.ReadLine(); 
-            #endregion
+///// Ejemplo de verificacion instancia unica del Singleton
+//var singleton = SingletonPattern.Singleton.Instance;
+//var a = SingletonPattern.Singleton.Instance;
+//var b = SingletonPattern.Singleton.Instance;
 
-            #region Factory
+//if (a == b)
+//    Console.WriteLine("Las instancias son iguales");
+//else
+//    Console.WriteLine("Las instancias no son iguales");
 
-            //SaleFactory storeSaleFactory = new StoreSaleFactory(10);
-            //SaleFactory internetSaleFactory = new InternetSaleFactory(10);
+//Console.ReadLine();
 
-            //ISale sale1 = storeSaleFactory.GetSale();
-            //sale1.Sell(15);
+#endregion
 
-            //ISale sale2 = internetSaleFactory.GetSale();
-            //sale2.Sell(15);
+#region Factory
 
-            #endregion
+//SaleFactory storeSaleFactory = new StoreSaleFactory(10);
+//SaleFactory internetSaleFactory = new InternetSaleFactory(10);
+
+//ISale sale1 = storeSaleFactory.GetSale();
+//sale1.Sell(15);
+
+//ISale sale2 = internetSaleFactory.GetSale();
+//sale2.Sell(15);
+
+#endregion
+
+#region Inject Dependency
+
+var beer = new Beer("Poker", "Bavaria");
+var drinkWithBeer = new DrinkWithBeer(10, 1, beer);
+drinkWithBeer.Build();
+
+#endregion
 
 
-        }
-    }
-}

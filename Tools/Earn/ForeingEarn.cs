@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tools.Earn
 {
+    // Concrete Product
     public class ForeingEarn : IEarn
     {
         private decimal _porcentaje;

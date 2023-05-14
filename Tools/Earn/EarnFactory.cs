@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tools.Earn
 {
+    // Creator
     public abstract class EarnFactory
     {
         public abstract IEarn GetEarn();

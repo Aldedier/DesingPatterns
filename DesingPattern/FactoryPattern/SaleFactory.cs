@@ -12,6 +12,7 @@ namespace DesingPattern.FactoryPattern
         public abstract ISale GetSale();
     }
 
+
     // Concrete Creator
     public class StoreSaleFactory : SaleFactory
     {
@@ -42,6 +43,7 @@ namespace DesingPattern.FactoryPattern
             return new InternetSale(_discount);
         }
     }
+
 
     // Concrete Product
     public class StoreSale : ISale

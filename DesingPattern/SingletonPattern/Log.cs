@@ -23,5 +23,10 @@ namespace DesingPattern.SingletonPattern
         {
             File.AppendAllText(_path, _message + Environment.NewLine);
         }
+
+        public string Read()
+        {
+            return File.ReadAllText(_path);
+        }
     }
 }

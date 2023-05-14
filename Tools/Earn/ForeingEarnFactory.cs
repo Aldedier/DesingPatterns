@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tools.Earn
 {
+    // Concrete Creator
     public class ForeingEarnFactory : EarnFactory
     {
         private decimal _porcentaje;
