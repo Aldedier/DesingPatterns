@@ -1,5 +1,8 @@
+using DesingPatterns.Models.Data;
+using DesingPatterns.Repository;
 using DesingPatternsAsp.Configuration;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,6 +28,15 @@ builder.Services.AddTransient((factory) =>
         builder.Configuration.GetSection("MyConfig").GetValue<decimal>("Extra")
         );
 });
+
+builder.Services.AddDbContext<DesingPatternsContext>(options => 
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Connection"));
+});
+
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
 var app = builder.Build();

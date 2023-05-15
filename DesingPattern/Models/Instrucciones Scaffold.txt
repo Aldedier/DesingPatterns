@@ -1,0 +1,5 @@
+﻿Scaffolding con EntityFramewor (BD to Code)
+
+Scaffold-DbContext "Server=PC-MARTINEZ\SQLEXPRESS; Database=DesingPatterns; Trusted_Connection=SSPI; MultipleActiveResultSets=True; Trust Server Certificate=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+Scaffold-DbContext "Server=PC-MARTINEZ\SQLEXPRESS; Database=DesingPatterns; Trusted_Connection=SSPI; MultipleActiveResultSets=True; Trust Server Certificate=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Force -context DesingPatternsContext

@@ -1,4 +1,6 @@
-﻿using DesingPatternsAsp.Configuration;
+﻿using DesingPatterns.Models.Data;
+using DesingPatterns.Repository;
+using DesingPatternsAsp.Configuration;
 using DesingPatternsAsp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -14,22 +16,28 @@ namespace DesingPatternsAsp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IOptions<MyConfig> config;
-        public HomeController(IOptions<MyConfig> _config)
+        private readonly IOptions<MyConfig> _config;
+        private readonly IRepository<Beer> _repository;
+
+        public HomeController(IOptions<MyConfig> config, IRepository<Beer> repository)
         {
-            config = _config;
+            _config = config;
+            _repository = repository;
         }
 
         public IActionResult Index()
         {
-            Log.GetInstance(config.Value.PathLog).Save($"Ingreso al index el {DateTime.Now}");
+            Log.GetInstance(_config.Value.PathLog).Save($"Ingreso al index el {DateTime.Now}");
             ViewBag.NOMBRE = "Aldedier Alberto Martinez Bejarano";
-            return View();
+
+            IEnumerable<Beer> lst = _repository.Get();
+
+            return View(lst);
         }
 
         public IActionResult Privacy()
         {
-            Log.GetInstance(config.Value.PathLog).Save($"Ingreso a privacy el {DateTime.Now}");
+            Log.GetInstance(_config.Value.PathLog).Save($"Ingreso a privacy el {DateTime.Now}");
             return View();
         }
 
